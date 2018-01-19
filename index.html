@@ -1,0 +1,34 @@
+<html> 
+<head> 
+<meta charset="utf-8"> 
+<title>ajax教程</title> 
+</head>
+<body>
+<form>
+<select id="status">
+<option value="">选择一个网站:</option>
+<option value="1">Google</option>
+<option value="2">淘宝</option>
+<option value="3">菜鸟教程</option>
+<option value="4">微博</option>
+<option value="5">Facebook</option>
+</select>
+</form>
+<br>
+<div id="opt"></div>
+<script src="/jquery.min.js"></script>
+<script>
+$("#status").change(function(){
+var str = $(this).val();
+	$.ajax({ 
+	  type: "get",
+	  url : '/getsite_mysql.php', 
+	  data: 'str='+str,
+	  success: function(cod){
+		$('#opt').html(cod);
+	  } 
+	});
+});
+</script>
+</body>
+</html>
